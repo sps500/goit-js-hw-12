@@ -11,9 +11,9 @@
 
     
     <script type="module" crossorigin src="/goit-js-hw-12/commonHelpers.js"></script>
-    <link rel="modulepreload" crossorigin href="/goit-js-hw-12/assets/vendor-dea3a18a.js">
+    <link rel="modulepreload" crossorigin href="/goit-js-hw-12/assets/vendor-2cfd16ce.js">
     <link rel="stylesheet" href="/goit-js-hw-12/assets/vendor-a51daae5.css">
-    <link rel="stylesheet" href="/goit-js-hw-12/assets/index-f7a79325.css">
+    <link rel="stylesheet" href="/goit-js-hw-12/assets/index-ce5922c7.css">
   </head>
   <body>
     <form class="submit-form" id="search-form">
@@ -25,13 +25,21 @@
       />
       <button class="submit-input" type="submit">Search</button>
     </form>
-
-    <div class="container-loader" id="loader">
-      <span class="loader"></span>
-      <p class="loader-span">Loading images, please wait....</p>
-    </div>
-
     <div id="gallery" class="gallery"></div>
+
+    <button
+      class="btn btn-primary button js-btn-load hidden"
+      data-action="load-more"
+    >
+      <span class="label">Load more</span>
+      <span
+        class="js-loader spinner-border spinner-border-sm spinner hidden"
+        role="status"
+        aria-hidden="true"
+      ></span>
+    </button>
+
+    <div id="loader"></div>
     
   </body>
 </html>
