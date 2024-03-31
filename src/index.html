@@ -21,13 +21,21 @@
       />
       <button class="submit-input" type="submit">Search</button>
     </form>
-
-    <div class="container-loader" id="loader">
-      <span class="loader"></span>
-      <p class="loader-span">Loading images, please wait....</p>
-    </div>
-
     <div id="gallery" class="gallery"></div>
+
+    <button
+      class="btn btn-primary button js-btn-load hidden"
+      data-action="load-more"
+    >
+      <span class="label">Load more</span>
+      <span
+        class="js-loader spinner-border spinner-border-sm spinner hidden"
+        role="status"
+        aria-hidden="true"
+      ></span>
+    </button>
+
+    <div id="loader"></div>
     <script type="module" src="./main.js"></script>
   </body>
 </html>
