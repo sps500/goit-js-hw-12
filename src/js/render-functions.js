@@ -1,5 +1,5 @@
 import SimpleLightbox from 'simplelightbox';
-
+import 'simplelightbox/dist/simple-lightbox.min.css';
 let lightbox = null;
 
 // Определение функции clearGallery
