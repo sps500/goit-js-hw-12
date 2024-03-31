@@ -1,8 +1,8 @@
 import SimpleLightbox from 'simplelightbox';
-import 'simplelightbox/dist/simple-lightbox.min.css';
+
+let lightbox = null;
 
 // Определение функции clearGallery
-
 export function clearGallery() {
   const gallery = document.querySelector('.gallery');
   gallery.innerHTML = '';
@@ -87,7 +87,10 @@ export function renderImages(images) {
     gallery.appendChild(container);
   });
 
-  // После добавления изображений вызываем метод refresh для SimpleLightbox
-  const lightbox = new SimpleLightbox('.gallery a');
-  lightbox.refresh();
+  // Создаем или обновляем SimpleLightbox
+  if (!lightbox) {
+    lightbox = new SimpleLightbox('.gallery a');
+  } else {
+    lightbox.refresh();
+  }
 }
