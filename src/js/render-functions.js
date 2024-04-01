@@ -1,6 +1,23 @@
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
+
 let lightbox = null;
+
+// Получаем высоту одной карточки галереи
+function getGalleryCardHeight() {
+  const galleryCard = document.querySelector('.image-container');
+  const cardHeight = galleryCard.getBoundingClientRect().height;
+  return cardHeight;
+}
+
+// Прокручиваем страницу на две высоты карточки галереи
+function scrollToNextGroup() {
+  const cardHeight = getGalleryCardHeight();
+  window.scrollBy({
+    top: cardHeight * 2,
+    behavior: 'smooth', // Делаем прокрутку плавной
+  });
+}
 
 // Определение функции clearGallery
 export function clearGallery() {
@@ -9,11 +26,8 @@ export function clearGallery() {
 }
 
 // Определение функции renderImages
-export function renderImages(images) {
+export function renderImages(images, append = false) {
   const gallery = document.querySelector('.gallery');
-
-  // Очищаем галерею перед добавлением новых изображений
-  gallery.innerHTML = '';
 
   // Функция для создания <li> с <p> и классом
   function createListItemWithParagraph(label, value, className) {
@@ -24,6 +38,11 @@ export function renderImages(images) {
     paragraph.textContent = `${value}`;
     listItem.appendChild(paragraph); // Добавление <p> к <li>
     return listItem;
+  }
+
+  // Создаем или очищаем галерею в зависимости от флага append
+  if (!append) {
+    gallery.innerHTML = '';
   }
 
   images.forEach(image => {
@@ -93,4 +112,7 @@ export function renderImages(images) {
   } else {
     lightbox.refresh();
   }
+
+  // Прокручиваем страницу на две высоты карточки галереи
+  scrollToNextGroup();
 }
