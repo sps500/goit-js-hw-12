@@ -12,15 +12,19 @@ export async function searchImages(keyword) {
   try {
     const response = await axios.get(url);
     const data = response.data;
-    return data.hits.map(image => ({
-      webformatURL: image.webformatURL,
-      largeImageURL: image.largeImageURL,
-      tags: image.tags,
-      likes: image.likes,
-      views: image.views,
-      comments: image.comments,
-      downloads: image.downloads,
-    }));
+    const totalHits = data.totalHits;
+    return {
+      images: data.hits.map(image => ({
+        webformatURL: image.webformatURL,
+        largeImageURL: image.largeImageURL,
+        tags: image.tags,
+        likes: image.likes,
+        views: image.views,
+        comments: image.comments,
+        downloads: image.downloads,
+      })),
+      totalHits,
+    };
   } catch (error) {
     throw new Error('Failed to fetch images from Pixabay API');
   }
@@ -33,4 +37,3 @@ export function resetPage() {
 export function increasePage() {
   currentPage++;
 }
-// ==================================
