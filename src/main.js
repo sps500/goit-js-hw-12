@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
       title: 'Error',
       position: 'topRight',
       message: message,
+      maxWidth: '400px',
     });
   }
 
